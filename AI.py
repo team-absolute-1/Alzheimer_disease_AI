@@ -10,7 +10,7 @@ class AI:
         self.name = name
 
     def remind_medicine(self):
-        message = "약을 먹을 시간입니다."
+        message = "약 드실 시간입니다."
         print(f"{self.name}: {message}")
 
         engine = pyttsx3.init()
@@ -19,24 +19,12 @@ class AI:
         engine.say(message)
         engine.runAndWait()
 
-        if platform.system() == "Windows":
-            ctypes.windll.user32.MessageBoxW(0, message, "알림", 0)
-        elif platform.system() in ["Linux", "Darwin"]:
-            Notification(
-                title="알림",
-                description=message,
-                duration=5,
-                urgency=Notification.URGENCY_CRITICAL,
-            ).send()
-        else:
-            print("팝업 알림이 지원되지 않는 시스템입니다.")
-
 
 def main():
     ai = AI("어시스턴트")
 
     schedule.every().day.at("09:00").do(ai.remind_medicine)
-    schedule.every().day.at("15:52").do(ai.remind_medicine)
+    schedule.every().day.at("17:12").do(ai.remind_medicine)
     schedule.every().day.at("19:00").do(ai.remind_medicine)
 
     while True:
