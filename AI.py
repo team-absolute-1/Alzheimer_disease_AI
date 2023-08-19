@@ -24,7 +24,7 @@ def main():
     ai = AI("어시스턴트")
 
     schedule.every().day.at("09:00").do(ai.remind_medicine)
-    schedule.every().day.at("17:12").do(ai.remind_medicine)
+    schedule.every().day.at("12:00").do(ai.remind_medicine)
     schedule.every().day.at("19:00").do(ai.remind_medicine)
 
     while True:
